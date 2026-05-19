@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ปาร์ตี้เลี้ยงรุ่น นรต.53</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Prompt -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        party: {
+                            dark: '#0f172a',      // กรมท่าเข้ม
+                            gold: '#f59e0b',      // ทองเหลือง
+                            glow: '#fbbf24',      // สีเหลืองเรืองแสง
+                            pink: '#ec4899',      // ชมพูปาร์ตี้
+                            blue: '#3b82f6',      // ฟ้าสดใส
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            background-color: #0f172a; 
+            color: #f8fafc;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(236, 72, 153, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(245, 158, 11, 0.15) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        
+        /* Glassmorphism Party Style */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* เมนูที่ Active */
+        .nav-active {
+            background: linear-gradient(135deg, #f59e0b, #ec4899);
+            color: white !important;
+            font-weight: 700;
+            border: none;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+        
+        /* ปุ่มสนุกๆ */
+        .btn-party {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: white;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: all 0.2s ease;
+        }
+        .btn-party:active { transform: scale(0.95); }
+        
+        .btn-map {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.2s ease;
+        }
+        .btn-map:active { transform: scale(0.95); background: rgba(255, 255, 255, 0.2); }
+    </style>
+</head>
+<body class="antialiased relative min-h-screen pb-24">
+
+    <!-- Confetti Background Layer -->
+    <div class="fixed inset-0 z-[-1] opacity-20 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/stardust.png');"></div>
+
+    <!-- Hero Section -->
+    <header class="pt-16 pb-10 px-4 text-center relative z-10 flex flex-col items-center">
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-party-glow text-[11px] font-bold px-4 py-1.5 rounded-full mb-5 shadow-lg backdrop-blur-md animate-float">
+            <i class="fa-solid fa-champagne-glasses"></i> งานเลี้ยงรุ่นประจำปี
+        </div>
+        
+        <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+            นรต. <span class="text-transparent bg-clip-text bg-gradient-to-r from-party-glow via-party-gold to-party-pink">๕๓</span>
+        </h1>
+        <p class="text-slate-300 font-medium text-[13px] md:text-sm mb-8 bg-black/20 px-4 py-1 rounded-full inline-block backdrop-blur-sm">
+            <i class="fa-solid fa-calendar-days mr-1 text-party-pink"></i> 6 - 7 มิ.ย. 69 • <i class="fa-solid fa-location-dot ml-1 mr-1 text-party-blue"></i> บางแสน
+        </p>
+
+        <!-- Countdown -->
+        <div id="countdown-container" class="flex justify-center gap-2 sm:gap-3 w-full max-w-sm">
+            <div class="glass-card flex-1 aspect-square max-h-[80px] flex flex-col items-center justify-center rounded-2xl border-t-2 border-t-party-blue/50">
+                <span id="cd-days" class="text-3xl font-bold text-white drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">00</span>
+                <span class="text-[10px] uppercase font-bold text-slate-400 mt-1">วัน</span>
+            </div>
+            <div class="glass-card flex-1 aspect-square max-h-[80px] flex flex-col items-center justify-center rounded-2xl border-t-2 border-t-party-pink/50">
+                <span id="cd-hours" class="text-3xl font-bold text-white drop-shadow-[0_0_8px_rgba(236,72,153,0.8)]">00</span>
+                <span class="text-[10px] uppercase font-bold text-slate-400 mt-1">ชม.</span>
+            </div>
+            <div class="glass-card flex-1 aspect-square max-h-[80px] flex flex-col items-center justify-center rounded-2xl border-t-2 border-t-party-glow/50">
+                <span id="cd-mins" class="text-3xl font-bold text-white drop-shadow-[0_0_8px_rgba(251,191,36,0.8)]">00</span>
+                <span class="text-[10px] uppercase font-bold text-slate-400 mt-1">นาที</span>
+            </div>
+            <div class="glass-card flex-1 aspect-square max-h-[80px] flex flex-col items-center justify-center rounded-2xl border-t-2 border-t-white/50 bg-white/10">
+                <span id="cd-secs" class="text-3xl font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,1)]">00</span>
+                <span class="text-[10px] uppercase font-bold text-slate-300 mt-1">วิ</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <div class="sticky top-4 z-50 px-4 mb-10">
+        <nav class="max-w-md mx-auto glass-nav p-1.5 rounded-[1.25rem] shadow-2xl flex justify-between gap-1 overflow-x-auto hide-scroll border border-white/10">
+            <a href="#day1" id="nav-day1" class="nav-btn nav-active flex-1 text-center py-3 px-2 text-[12px] rounded-xl transition-all whitespace-nowrap">
+                <i class="fa-solid fa-fire-flame-curved mr-1"></i> 6 มิ.ย.
+            </a>
+            <a href="#hotel-rules" id="nav-rules" class="nav-btn text-slate-300 font-semibold flex-1 text-center py-3 px-2 text-[12px] rounded-xl transition-all whitespace-nowrap hover:bg-white/10">
+                <i class="fa-solid fa-triangle-exclamation mr-1 text-red-400"></i> กฎระเบียบ
+            </a>
+            <a href="#day2" id="nav-day2" class="nav-btn text-slate-300 font-semibold flex-1 text-center py-3 px-2 text-[12px] rounded-xl transition-all whitespace-nowrap hover:bg-white/10">
+                <i class="fa-solid fa-hands-praying mr-1 text-party-glow"></i> 7 มิ.ย.
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-2xl mx-auto px-4 space-y-10 relative z-10">
+
+        <!-- วันเสาร์ที่ 6 มิ.ย. -->
+        <section id="day1" class="scroll-mt-32">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-party-gold to-party-pink flex items-center justify-center shadow-[0_0_15px_rgba(236,72,153,0.5)]">
+                    <i class="fa-regular fa-calendar text-white text-lg"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white drop-shadow-md">เสาร์ 6 มิ.ย.</h2>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- กอล์ฟ -->
+                <div class="glass-card rounded-[2rem] p-5 relative overflow-hidden group">
+                    <!-- ลายน้ำรูปลูกกอล์ฟบนแท่นที (เหมือนฟุตบอล) -->
+                    <div class="absolute -right-6 -top-6 text-white/5 text-8xl transform rotate-12 group-hover:scale-110 transition-transform pointer-events-none"><i class="fa-solid fa-golf-ball-tee"></i></div>
+                    
+                    <div class="relative z-10 mb-4">
+                        <span class="inline-block text-[10px] font-bold text-black bg-emerald-400 px-3 py-1 rounded-full shadow-[0_0_10px_rgba(52,211,153,0.4)] mb-2">10:00 น.</span>
+                        <h3 class="text-xl font-bold text-white">กอล์ฟรุ่น นรต.53</h3>
+                        <p class="text-[13px] text-slate-300 mt-1"><i class="fa-solid fa-location-dot mr-1.5 text-emerald-400"></i>สนามบางพระ</p>
+                    </div>
+                    
+                    <!-- ปุ่มเหมือนฟุตบอล -->
+                    <div class="grid grid-cols-2 gap-3 mt-5 relative z-10">
+                        <a href="https://maps.app.goo.gl/YPqX8tX1f7efjyGD7" target="_blank" class="btn-map text-center text-[13px] font-medium py-3.5 rounded-[1.25rem] flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-map-location-dot text-emerald-400"></i> แผนที่
+                        </a>
+                        <a href="tel:0816943261" class="btn-party text-center text-[13px] font-bold py-3.5 rounded-[1.25rem] flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-phone text-white/80"></i> สุริยะ
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ฟุตบอล -->
+                <div class="glass-card rounded-[2rem] p-5 relative overflow-hidden group">
+                    <!-- ลายน้ำลูกฟุตบอล -->
+                    <div class="absolute -right-6 -top-6 text-white/5 text-8xl transform rotate-12 group-hover:scale-110 transition-transform pointer-events-none"><i class="fa-solid fa-futbol"></i></div>
+                    
+                    <div class="relative z-10 mb-4">
+                        <span class="inline-block text-[10px] font-bold text-white bg-party-blue px-3 py-1 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.4)] mb-2">16:00 - 18:00 น.</span>
+                        <h3 class="text-xl font-bold text-white">การแข่งขันฟุตบอล</h3>
+                        <p class="text-[13px] text-slate-300 mt-1"><i class="fa-solid fa-location-dot mr-1.5 text-party-blue"></i>สนามกีฬาเทศบาลเมืองชลบุรี</p>
+                    </div>
+                    
+                    <!-- ปุ่มเหมือนกอล์ฟ -->
+                    <div class="grid grid-cols-2 gap-3 mt-5 relative z-10">
+                        <a href="https://maps.app.goo.gl/RoQpZknVtFvQfPDY8" target="_blank" class="btn-map text-center text-[13px] font-medium py-3.5 rounded-[1.25rem] flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-map-location-dot text-party-blue"></i> แผนที่
+                        </a>
+                        <div class="grid grid-cols-2 gap-2">
+                             <a href="tel:0815952228" class="btn-party text-center text-[11px] sm:text-[12px] font-bold py-3.5 rounded-[1.25rem] flex flex-col items-center justify-center leading-tight">
+                                <i class="fa-solid fa-phone mb-0.5 text-white/80"></i> ไกรศรี
+                            </a>
+                            <a href="tel:0919151515" class="btn-party text-center text-[11px] sm:text-[12px] font-bold py-3.5 rounded-[1.25rem] flex flex-col items-center justify-center leading-tight">
+                                <i class="fa-solid fa-phone mb-0.5 text-white/80"></i> จรูญ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- งานเลี้ยงโรงแรม -->
+                <div class="relative rounded-[2rem] p-[2px] bg-gradient-to-b from-party-gold via-party-pink to-transparent shadow-[0_0_30px_rgba(236,72,153,0.2)]">
+                    <div class="bg-party-dark/90 rounded-[2rem] overflow-hidden backdrop-blur-xl">
+                        <div class="p-6 text-center relative overflow-hidden border-b border-white/10">
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-party-pink/30 rounded-full blur-3xl pointer-events-none"></div>
+                            
+                            <span class="inline-block text-[11px] font-bold text-white bg-party-pink px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(236,72,153,0.5)] mb-3 relative z-10 animate-pulse">18:00 - 24:00 น.</span>
+                            <h3 class="text-2xl font-extrabold text-white relative z-10">ปาร์ตี้งานเลี้ยง นรต.53 <i class="fa-solid fa-martini-glass-citrus text-party-glow ml-1"></i></h3>
+                            <div class="flex items-center justify-center gap-2 mt-3 relative z-10">
+                                <p class="text-[14px] text-slate-300"><i class="fa-solid fa-hotel mr-1 text-slate-400"></i>โรงแรมบางแสนเฮอริเทจ</p>
+                                <a href="https://maps.app.goo.gl/GqHettuxZXHzKFae7" target="_blank" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                                    <i class="fa-solid fa-diamond-turn-right text-party-glow text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="p-5 md:p-7">
+                            <div class="bg-gradient-to-r from-party-gold/20 to-party-pink/20 border border-party-pink/30 rounded-2xl p-4 mb-6 text-center shadow-inner relative overflow-hidden">
+                                <i class="fa-solid fa-gift absolute -right-2 -bottom-4 text-6xl text-white/5 transform -rotate-12"></i>
+                                <h4 class="font-bold text-party-glow text-sm mb-1.5"><i class="fa-solid fa-heart text-party-pink mr-1"></i> ช่วงเวลาของครอบครัว (18:00 - 20:00)</h4>
+                                <p class="text-white/90 text-[12px] leading-relaxed mb-3">
+                                    ปธ.เอ จัดเต็มแจกรางวัลตลอดช่วงหัวค่ำ เพื่อขอบคุณครอบครัวที่มาร่วมงาน
+                                </p>
+                                <div class="inline-block bg-black/40 text-red-400 text-[10px] px-3 py-1.5 rounded-lg border border-red-500/30 font-medium">
+                                    *ผู้รับรางวัลต้องอยู่ภายในงานเท่านั้น (การตัดสินของกรรมการถือเป็นที่สิ้นสุด)
+                                </div>
+                            </div>
+
+                            <div class="space-y-4">
+                                <!-- เด็กเล็ก -->
+                                <div class="glass-card p-3.5 rounded-2xl flex items-center gap-4">
+                                    <div class="w-12 text-center shrink-0">
+                                        <div class="text-[10px] text-slate-400 font-bold leading-none">18:00</div>
+                                        <div class="text-[10px] text-slate-400 font-bold leading-none mt-1">18:30</div>
+                                    </div>
+                                    <div class="w-1 h-10 bg-gradient-to-b from-party-blue to-party-pink rounded-full shrink-0"></div>
+                                    <div class="flex-1">
+                                        <h4 class="font-bold text-white text-[13px]"><i class="fa-solid fa-baby text-party-blue mr-1.5"></i>จับรางวัลครอบครัว (แรกเกิด-10ขวบ)</h4>
+                                        <p class="text-[11px] text-party-glow mt-1 font-medium">ลงทะเบียน 18:00 | ลุ้น 5 รางวัล (เวลา 18:30)</p>
+                                    </div>
+                                </div>
+
+                                <!-- วัยรุ่น -->
+                                <div class="glass-card p-3.5 rounded-2xl flex items-center gap-4">
+                                    <div class="w-12 text-center shrink-0">
+                                        <div class="text-[10px] text-slate-400 font-bold leading-none">18:40</div>
+                                        <div class="text-[10px] text-slate-400 font-bold leading-none mt-1">19:00</div>
+                                    </div>
+                                    <div class="w-1 h-10 bg-gradient-to-b from-party-pink to-party-gold rounded-full shrink-0"></div>
+                                    <div class="flex-1">
+                                        <h4 class="font-bold text-white text-[13px]"><i class="fa-solid fa-gamepad text-party-pink mr-1.5"></i>จับรางวัลครอบครัว (10-18 ปี)</h4>
+                                        <p class="text-[11px] text-party-glow mt-1 font-medium">ลงทะเบียน 18:40 | ลุ้น 5 รางวัล (เวลา 19:00)</p>
+                                    </div>
+                                </div>
+
+                                <!-- ภรรยา/ผู้ติดตาม -->
+                                <div class="glass-card p-3.5 rounded-2xl flex items-center gap-4 border border-party-gold/30 shadow-[0_0_10px_rgba(245,158,11,0.1)]">
+                                    <div class="w-12 text-center shrink-0">
+                                        <div class="text-[10px] text-party-gold font-bold leading-none">19:20</div>
+                                        <div class="text-[10px] text-party-gold font-bold leading-none mt-1">19:40</div>
+                                    </div>
+                                    <div class="w-1 h-10 bg-party-gold rounded-full shrink-0 shadow-[0_0_8px_rgba(245,158,11,0.8)]"></div>
+                                    <div class="flex-1">
+                                        <h4 class="font-bold text-white text-[13px]"><i class="fa-solid fa-gem text-party-gold mr-1.5"></i>จับรางวัล ภรรยา / ผู้ติดตาม</h4>
+                                        <p class="text-[11px] text-party-glow mt-1 font-medium">ลงทะเบียน 19:20 | ลุ้น 5 รางวัล (เวลา 19:40)</p>
+                                    </div>
+                                </div>
+
+                                <!-- ช่วงประธาน -->
+                                <div class="glass-card p-3.5 rounded-2xl flex items-center gap-4 bg-white/5">
+                                    <div class="w-12 text-center shrink-0">
+                                        <div class="text-[11px] text-white font-bold">20:00</div>
+                                    </div>
+                                    <div class="w-1 h-10 bg-white/40 rounded-full shrink-0"></div>
+                                    <div class="flex-1">
+                                        <h4 class="font-bold text-white text-[13px]"><i class="fa-solid fa-microphone-lines mr-1.5"></i>ประธานเอ ดำเนินกิจกรรม</h4>
+                                        <p class="text-[11px] text-slate-300 mt-0.5">กล่าวเปิดงาน และ ประกาศ ปธ.รุ่นคนต่อไป</p>
+                                    </div>
+                                </div>
+
+                                <!-- ไฮไลท์จับรางวัลใหญ่เพื่อน -->
+                                <div class="relative bg-gradient-to-r from-red-600 to-party-pink p-[2px] rounded-2xl animate-pulse-slow mt-2">
+                                    <div class="bg-party-dark p-3.5 rounded-2xl flex items-center gap-4">
+                                        <div class="w-12 text-center shrink-0">
+                                            <div class="text-[11px] text-party-glow font-extrabold">20:40</div>
+                                        </div>
+                                        <div class="w-1 h-10 bg-party-glow rounded-full shrink-0"></div>
+                                        <div class="flex-1">
+                                            <h4 class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-party-glow to-white text-[14px] uppercase tracking-wide"><i class="fa-solid fa-sack-dollar text-party-glow mr-1"></i> จับรางวัลใหญ่ เพื่อน นรต.53</h4>
+                                            <p class="text-[11px] text-white mt-1 font-bold">แจกหนัก 50-60 รางวัล (ลุ้นรางวัลใหญ่สุดพิเศษ!)</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- ดนตรี -->
+                                <div class="glass-card p-3.5 rounded-2xl flex items-center gap-4 border-b border-party-blue/30">
+                                    <div class="w-12 text-center shrink-0">
+                                        <div class="text-[11px] text-party-blue font-bold">21:00</div>
+                                    </div>
+                                    <div class="w-1 h-10 bg-party-blue rounded-full shrink-0 shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+                                    <div class="flex-1">
+                                        <h4 class="font-bold text-white text-[13px]"><i class="fa-solid fa-music text-party-blue mr-1.5"></i>กิจกรรมดนตรี & ปาร์ตี้</h4>
+                                        <p class="text-[11px] text-slate-300 mt-0.5">สนุกสุดเหวี่ยงยาวๆ ไปจนถึง 23:30 น.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- กฎระเบียบโรงแรม -->
+        <section id="hotel-rules" class="scroll-mt-32">
+            <div class="glass-card rounded-[2rem] p-6 border border-red-500/30 relative overflow-hidden">
+                <div class="absolute -right-4 -top-4 w-24 h-24 bg-red-500/20 rounded-full blur-2xl pointer-events-none"></div>
+                
+                <div class="text-center mb-6 relative z-10">
+                    <div class="inline-flex items-center justify-center w-12 h-12 bg-red-500/20 text-red-400 rounded-full mb-3 shadow-[0_0_15px_rgba(239,68,68,0.3)]">
+                        <i class="fa-solid fa-circle-exclamation text-xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-white">กฎระเบียบโรงแรม</h2>
+                    <p class="text-[12px] text-red-400 font-medium mt-1 tracking-wide">ผู้กระทำผิดชำระค่าปรับเองนะครับ</p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 relative z-10">
+                    <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors">
+                        <i class="fa-solid fa-head-side-cough text-red-400 text-2xl mb-2"></i>
+                        <h4 class="text-[12px] font-bold text-slate-200">อาเจียน</h4>
+                        <div class="text-[10px] font-bold text-white bg-red-500/80 px-2 py-1 rounded-md mt-2 inline-block">ปรับ 1,000.-</div>
+                    </div>
+                    <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors">
+                        <i class="fa-solid fa-ban-smoking text-red-400 text-2xl mb-2"></i>
+                        <h4 class="text-[12px] font-bold text-slate-200">สูบบุหรี่</h4>
+                        <div class="text-[10px] font-bold text-white bg-red-500/80 px-2 py-1 rounded-md mt-2 inline-block">ปรับ 5,000.-</div>
+                    </div>
+                    <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors">
+                        <i class="fa-solid fa-lemon text-red-400 text-2xl mb-2"></i>
+                        <h4 class="text-[12px] font-bold text-slate-200">ผลไม้กลิ่นแรง</h4>
+                        <div class="text-[10px] font-bold text-white bg-red-500/80 px-2 py-1 rounded-md mt-2 inline-block">ปรับ 5,000.-</div>
+                    </div>
+                    <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors">
+                        <i class="fa-solid fa-paw text-slate-400 text-2xl mb-2"></i>
+                        <h4 class="text-[12px] font-bold text-slate-200">งดสัตว์เลี้ยง</h4>
+                        <p class="text-[10px] text-slate-400 mt-1.5">ห้ามเข้าพื้นที่</p>
+                    </div>
+                    <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors">
+                        <i class="fa-solid fa-wine-glass-empty text-slate-400 text-2xl mb-2"></i>
+                        <h4 class="text-[12px] font-bold text-slate-200">ภาชนะแตก</h4>
+                        <p class="text-[10px] text-slate-400 mt-1.5">จ่ายตามจริง</p>
+                    </div>
+                    <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors">
+                        <i class="fa-solid fa-bed text-slate-400 text-2xl mb-2"></i>
+                        <h4 class="text-[12px] font-bold text-slate-200">เตียงเสริม</h4>
+                        <p class="text-[10px] text-slate-400 mt-1.5">แจ้ง Check-in</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- วันอาทิตย์ที่ 7 มิ.ย. -->
+        <section id="day2" class="scroll-mt-32">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
+                    <i class="fa-regular fa-sun text-party-glow text-lg"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white">อาทิตย์ 7 มิ.ย.</h2>
+            </div>
+            
+            <div class="glass-card rounded-[2rem] p-5 flex gap-4 items-center border border-party-glow/30">
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-party-gold to-orange-500 flex items-center justify-center shadow-[0_0_15px_rgba(245,158,11,0.4)] shrink-0">
+                    <i class="fa-solid fa-hands-praying text-white text-3xl"></i>
+                </div>
+                <div>
+                    <span class="inline-block text-[10px] font-bold text-black bg-party-glow px-3 py-1 rounded-full mb-1.5">09:00 - 10:00 น.</span>
+                    <h3 class="text-lg font-bold text-white leading-tight">พิธีสงฆ์ทำบุญ</h3>
+                    <p class="text-[12px] text-slate-300 mt-1">ทำบุญให้เพื่อนที่จากไป ณ โรงแรม</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Sticky Footer -->
+    <footer class="fixed bottom-0 left-0 right-0 glass-nav px-4 py-3 z-40 border-t border-white/10 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+        <div class="max-w-2xl mx-auto flex justify-between items-center gap-3">
+            <div class="flex-1">
+                <h4 class="text-[14px] font-bold text-party-glow flex items-center gap-1.5">
+                    <i class="fa-solid fa-gift text-party-pink"></i> สนับสนุนงานรุ่น
+                </h4>
+                <p class="text-[10px] text-slate-300 mt-0.5 leading-tight">เพื่อนๆ ร่วมสนับสนุนของแจกในงานได้ครับ</p>
+            </div>
+            <a href="tel:0654455353" class="btn-party text-[13px] font-bold px-5 py-3 rounded-xl whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-phone-volume animate-pulse"></i> โทรติดต่อ
+            </a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // 1. Countdown Logic (6 June 2026, 10:00 AM)
+        const eventDate = new Date('2026-06-06T10:00:00').getTime();
+        
+        const countdownTimer = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById("countdown-container").innerHTML = `
+                    <div class="glass-card w-full p-4 rounded-2xl text-center border border-party-glow/50 shadow-[0_0_20px_rgba(251,191,36,0.3)] animate-pulse-slow">
+                        <h3 class="text-xl font-bold text-party-glow"><i class="fa-solid fa-champagne-glasses"></i> ปาร์ตี้เริ่มแล้ว! ลุยเลย!</h3>
+                    </div>`;
+                return;
+            }
+
+            document.getElementById("cd-days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            document.getElementById("cd-hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            document.getElementById("cd-mins").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            document.getElementById("cd-secs").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        }, 1000);
+
+        // 2. Auto-scroll to current date
+        window.addEventListener('DOMContentLoaded', () => {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            const currentDate = `${yyyy}-${mm}-${dd}`;
+
+            setTimeout(() => {
+                if (currentDate === '2026-06-06') {
+                    document.getElementById('day1').scrollIntoView({ behavior: 'smooth' });
+                } else if (currentDate === '2026-06-07') {
+                    document.getElementById('day2').scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 800);
+        });
+
+        // 3. ScrollSpy Menu
+        const sections = document.querySelectorAll('section');
+        const navBtns = document.querySelectorAll('.nav-btn');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navBtns.forEach(btn => {
+                btn.classList.remove('nav-active');
+                btn.classList.add('text-slate-300', 'font-semibold');
+                
+                if (btn.getAttribute('href') === `#${current}`) {
+                    btn.classList.add('nav-active');
+                    btn.classList.remove('text-slate-300', 'font-semibold');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
