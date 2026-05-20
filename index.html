@@ -331,37 +331,61 @@
                         <i class="fa-solid fa-circle-exclamation text-xl"></i>
                     </div>
                     <h2 class="text-xl font-bold text-white">กฎระเบียบโรงแรม</h2>
-                    <p class="text-[12px] text-red-400 font-medium mt-1 tracking-wide">สนุกแบบมีขอบเขต</p>
+                    <p class="text-[12px] text-red-400 font-medium mt-1 tracking-wide">สนุกแบบมีขอบเขต ผู้กระทำผิดชำระค่าปรับเองนะครับ</p>
                 </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 relative z-10">
+                    
+                    <!-- อาเจียน (เพิ่มวงกลมขีดทับ) -->
                     <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors">
-                        <i class="fa-solid fa-head-side-cough text-red-400 text-2xl mb-2"></i>
+                        <div class="relative inline-flex items-center justify-center mb-2 w-10 h-10">
+                            <i class="fa-solid fa-head-side-cough text-red-400 text-xl"></i>
+                            <i class="fa-solid fa-ban text-red-500 text-[32px] absolute"></i>
+                        </div>
                         <h4 class="text-[12px] font-bold text-slate-200">อาเจียน</h4>
-                        <p class="text-[10px] text-slate-400 mt-1.5">ไม่ดื่มเมามายจนเกินงาม</p>
+                        <p class="text-[10px] text-slate-400 mt-1.5 leading-tight">ไม่ดื่มเมามายจนเกินงาม</p>
                     </div>
-                    <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors">
-                        <i class="fa-solid fa-ban-smoking text-red-400 text-2xl mb-2"></i>
-                        <h4 class="text-[12px] font-bold text-slate-200">ไม่สูบบุหรี่ในห้องพัก</h4>
+
+                    <!-- สูบบุหรี่ -->
+                    <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-ban-smoking text-red-500 text-[28px] mb-3"></i>
+                        <h4 class="text-[12px] font-bold text-slate-200 leading-tight">ไม่สูบบุหรี่<br>ในห้องพัก</h4>
                     </div>
-                    <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors">
-                        <i class="fa-solid fa-lemon text-red-400 text-2xl mb-2"></i>
-                        <h4 class="text-[12px] font-bold text-slate-200 leading-tight">ห้ามผลไม้/อาหารกลิ่นแรง</h4>
+
+                    <!-- ผลไม้กลิ่นแรง -->
+                    <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors flex flex-col items-center justify-center">
+                        <div class="relative inline-flex items-center justify-center mb-2 w-10 h-10">
+                            <i class="fa-solid fa-lemon text-red-400 text-xl"></i>
+                            <i class="fa-solid fa-ban text-red-500 text-[32px] absolute"></i>
+                        </div>
+                        <h4 class="text-[12px] font-bold text-slate-200 leading-tight">ห้ามผลไม้/<br>อาหารกลิ่นแรง</h4>
                     </div>
-                    <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors">
-                        <i class="fa-solid fa-paw text-red-400 text-2xl mb-2"></i>
+
+                    <!-- งดสัตว์เลี้ยง -->
+                    <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors flex flex-col items-center justify-center">
+                        <div class="relative inline-flex items-center justify-center mb-2 w-10 h-10">
+                            <i class="fa-solid fa-paw text-red-400 text-xl"></i>
+                            <i class="fa-solid fa-ban text-red-500 text-[32px] absolute"></i>
+                        </div>
                         <h4 class="text-[12px] font-bold text-slate-200">งดสัตว์เลี้ยง</h4>
-                        <p class="text-[10px] text-slate-400 mt-1.5">ห้ามเข้าพื้นที่</p>
                     </div>
-                    <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors">
-                        <i class="fa-solid fa-wine-glass-empty text-red-400 text-2xl mb-2"></i>
-                        <h4 class="text-[12px] font-bold text-slate-200 leading-tight">ไม่ทำข้าวของเสียหาย</h4>
+
+                    <!-- ไม่ทำข้าวของเสียหาย -->
+                    <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors flex flex-col items-center justify-center">
+                        <div class="relative inline-flex items-center justify-center mb-2 w-10 h-10">
+                            <i class="fa-solid fa-wine-glass-empty text-red-400 text-xl"></i>
+                            <i class="fa-solid fa-ban text-red-500 text-[32px] absolute"></i>
+                        </div>
+                        <h4 class="text-[12px] font-bold text-slate-200 leading-tight">ไม่ทำข้าวของ<br>เสียหาย</h4>
                     </div>
-                    <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors">
-                        <i class="fa-solid fa-bed text-red-400 text-2xl mb-2"></i>
+
+                    <!-- เตียงเสริม (ปรับไอคอนให้ดูเป็นการติดต่อ ไม่ใช่ห้าม) -->
+                    <div class="bg-black/30 border border-white/5 rounded-2xl p-4 text-center hover:bg-black/50 transition-colors flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-bed text-red-400 text-[26px] mb-3"></i>
                         <h4 class="text-[12px] font-bold text-slate-200">เตียงเสริม</h4>
                         <p class="text-[10px] text-slate-400 mt-1.5">แจ้ง Check-in</p>
                     </div>
+
                 </div>
             </div>
         </section>
